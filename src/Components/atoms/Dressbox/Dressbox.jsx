@@ -10,10 +10,6 @@ function DressBox() {
                 <button className="deleteButton"></button>
             </div>
         </div>
-
-
-
-
     )
 }
 
