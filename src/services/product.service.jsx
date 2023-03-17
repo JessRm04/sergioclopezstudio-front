@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react'
 
 const ProductService = () => {
 
-    $baseUrl = "http://127.0.0.1:8000/api/products";
+    $baseUrl = "http://127.0.0.1:8000/api/";
 
     const [products, setProducts] = useState([]);    
 
     const getProducts = () => {
 
-        fetch({$baseUrl})
+        fetch({$baseUrl} + "products")
         .then(response => {
             return response.json();
         })
