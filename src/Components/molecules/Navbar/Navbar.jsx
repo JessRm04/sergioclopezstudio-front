@@ -5,6 +5,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import miniLogo from '../../../assets/design/miniLogo.png'
 import './styleNavbar.css'
+import { Link } from "react-router-dom";
 
 function NavbarComponent() {
   return (
@@ -20,7 +21,7 @@ function NavbarComponent() {
             >
               <Offcanvas.Header closeButton>
                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  <img src={miniLogo} alt="logo" width="12%"></img>
+                <Nav.Link href="/"><img src={miniLogo} alt="logo" width="12%"></img></Nav.Link>
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
@@ -37,10 +38,10 @@ function NavbarComponent() {
               </Offcanvas.Body>
             </Navbar.Offcanvas>
             <div className="logoContainer">
-            <Navbar.Brand href="#"><img src={miniLogo} alt="logo" width="22%" className="logo"></img></Navbar.Brand>
+            <Nav.Link href="/"><img src={miniLogo} alt="logo" width="18%"></img></Nav.Link>
             </div>
             <span>
-            <Nav.Link href="#action1">Log in</Nav.Link>
+            <Nav.Link href="login">Log in</Nav.Link>
             </span>
           </Container>
         </Navbar>

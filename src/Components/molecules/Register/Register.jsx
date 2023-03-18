@@ -5,17 +5,15 @@ import "./styleRegister.css";
 import {useForm } from "react-hook-form";
 import axios from 'axios';
 
+
 function Register () {
 
 const { register, formState: {errors}, handleSubmit } = useForm();
 
+const postUser = 'http://127.0.0.1:8000/api/register'
 
 const onSubmit = (data) => {
-    axios.post('http://127.0.0.1:8000/api/register', {
-        name: '',
-        email: '',
-        password: ''
-      })
+    axios.post(postUser, data)
       .then(function (response) {
         console.log(response);
       })
@@ -50,7 +48,7 @@ const onSubmit = (data) => {
                     <Form.Check type="checkbox" label="Recuérdame" />
                 </Form.Group><br/>
 
-                <Button variant="dark" type="submit" className="button">
+                <Button type="submit" className="btn btn-dark">
                 Registrarme
                 </Button>
             </Form>

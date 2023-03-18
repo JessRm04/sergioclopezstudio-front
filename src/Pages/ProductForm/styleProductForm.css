@@ -1,9 +1,14 @@
+.pagetitle{
+    margin-left: 5%;
+}
+
 #form{
     width: 80%;
     margin: auto;
-    margin-top: 15%;
+    margin-top: 5%;
 }
 
 .btn{
     margin: auto;
 }
+

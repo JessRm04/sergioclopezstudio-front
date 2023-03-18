@@ -8,7 +8,7 @@ const ProductService = () => {
 
     const getProducts = () => {
 
-        fetch({$baseUrl} + "products")
+        fetch(`${baseUrl}products/${productId}`)
         .then(response => {
             return response.json();
         })

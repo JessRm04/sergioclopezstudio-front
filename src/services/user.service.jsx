@@ -1,27 +1,25 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 
 const UserService = () => {
 
-    $baseUrl = "http://127.0.0.1:8000/api/";
+  const baseUrl = 'http://127.0.0.1:8000/api/';
 
-    const [users, setUsers] = useState([]);    
+  const [users, setUsers] = useState([]);
 
-    const getProducts = () => {
+  const getUser = (userId) => {
+    fetch(`${baseUrl}register/`)
+      .then(response => {
+        return response.json();
+      })
+      .then(users => {
+        setUsers(users);
+      });
+  };
 
-        fetch(`${baseUrl}user/${userId}`)
-        .then(response => {
-            return response.json();
-        })
-        .then(users => {
-     
-            setUsers(users);
-        });
-    };
+  useEffect(() => {
+    getUser();
+  }, []);
 
-    useEffect(() => {
-        getProducts();
-      }, []);
-
-    }
+};
 
 export default UserService;
