@@ -1,53 +1,78 @@
-import React from 'react'
+import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import './styleLogin.css'
 import {useForm } from "react-hook-form";
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
+
 
 function Login() {
+
+  //API service
 
         const { register, formState: {errors}, handleSubmit } = useForm();
         
         const postUser = 'http://127.0.0.1:8000/api/login'
+
+        const navigate = useNavigate();
         
         const onSubmit = (data) => {
-            axios.post(postUser, data)
-              .then(function (response) {
-                console.log(response);
-              })
-              .catch(function (error) {
-                console.log(error);
-              });
-        }
+          localStorage.setItem('loginData', JSON.stringify(data));
+          const formData = new FormData();
+          formData.append('email', data.email);
+          formData.append('password', data.password);
+          
+          
+          axios.post(postUser, formData)
+            .then(function (response) {
+              localStorage.setItem('token', response.data.token);
+              console.log(response);
+              // navigate('/', { state: {userData: response} });
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        };
+        
+
+  //Event
+
+    const [credentials, setCredentials] = useState ({
+      email: '',
+      password:'',
+      });
+      
+      const {email, password} = credentials
+      
+      const handleChange = event => {
+      setCredentials (credentials => ({
+      ...credentials,
+      [event.target.name] : event.target.value,
+      }));
+    };
         
   return (
-    <>
-    <Form id="form" onSubmit={handleSubmit(onSubmit)}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email</Form.Label>
-        <Form.Control type="email" placeholder="Introduce tu email" {...register('email', {required:true})} />
-          {errors.nombre?.type === 'required' && <p>El campo email es requerido.</p>}
-      </Form.Group>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <input
+        type="email"
+        name="email"
+        onChange={handleChange}
+        {...register("email", { required: true })}
+      />
+      {errors.email && <span>This field is required</span>}
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Contraseña</Form.Label>
-        <Form.Control type="password" placeholder="Introduce tu contraseña" {...register('password', {required:true, minLenght
-          : 8})}/>
-         {errors.nombre?.type === 'required' && <p>Debes incluir una contraseña.</p>}
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Recuérdame" />
-      </Form.Group>
+      <input
+        type="password"
+        name="password"
+        onChange={handleChange}
+        {...register("password", { required: true })}
+      />
+      {errors.password && <span>This field is required</span>}
 
-      <Button className="btn btn-dark" type="submit" >
-        Submit
+      <Button variant="primary" type="submit">
+        Log in
       </Button>
-    </Form>
-    <br/>
-    <p className="donthaveanaccount">¿No tienes una cuenta? <Link href="register">Regístrate.</Link></p>
-    </>
+    </form>
   );
 }
 

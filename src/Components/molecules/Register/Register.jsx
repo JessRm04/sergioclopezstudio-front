@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import "./styleRegister.css";
 import {useForm } from "react-hook-form";
 import axios from 'axios';
+import { useLocation } from "react-router-dom";
 
 
 function Register () {
@@ -20,9 +21,11 @@ const onSubmit = (data) => {
       .catch(function (error) {
         console.log(error);
       });
+      
 }
 
     return (
+        <>
             <Form id="form" onSubmit={handleSubmit(onSubmit)}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Nombre y apellidos</Form.Label>
@@ -52,7 +55,7 @@ const onSubmit = (data) => {
                 Registrarme
                 </Button>
             </Form>
-       
+            </>
         );
     }
 

@@ -32,7 +32,7 @@ function NavbarComponent() {
                     <NavDropdown.Item href="#action3">Shake</NavDropdown.Item>
                     <NavDropdown.Item href="#action4">Lacrimatorio</NavDropdown.Item>
                   </NavDropdown>
-                  <Nav.Link href="#action1">Añadir producto</Nav.Link>
+                  <Nav.Link href="createProduct">Añadir producto</Nav.Link>
                   <Nav.Link href="#action1">Añadir colección</Nav.Link>
                 </Nav>
               </Offcanvas.Body>
@@ -41,7 +41,8 @@ function NavbarComponent() {
             <Nav.Link href="/"><img src={miniLogo} alt="logo" width="18%"></img></Nav.Link>
             </div>
             <span>
-            <Nav.Link href="login">Log in</Nav.Link>
+            <button className="contactButton" href="">Contacto</button>
+            <Nav.Link className="loginButton"  href="login">Log in</Nav.Link>
             </span>
           </Container>
         </Navbar>

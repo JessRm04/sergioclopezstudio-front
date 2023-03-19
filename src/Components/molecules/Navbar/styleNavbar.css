@@ -24,3 +24,13 @@
     }
   } */
 
+
+  .contactButton{
+    background-color: black;
+    color: white;
+  }
+
+  .loginButton{
+    display: flex;
+    justify-content: end;
+  }
