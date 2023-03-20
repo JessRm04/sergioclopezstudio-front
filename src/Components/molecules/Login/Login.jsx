@@ -52,7 +52,7 @@ function Login() {
     };
         
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="form">
       <input
         type="email"
         name="email"
@@ -60,6 +60,7 @@ function Login() {
         {...register("email", { required: true })}
       />
       {errors.email && <span>This field is required</span>}
+      <br/>
 
       <input
         type="password"
@@ -68,8 +69,9 @@ function Login() {
         {...register("password", { required: true })}
       />
       {errors.password && <span>This field is required</span>}
-
-      <Button variant="primary" type="submit">
+      <br/>
+      
+      <Button variant="primary" type="submit" className="btn">
         Log in
       </Button>
     </form>

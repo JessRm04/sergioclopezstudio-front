@@ -1,14 +1,10 @@
-.pagetitle{
-    margin-left: 5%;
+.form{
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
 }
 
-#form{
-    width: 80%;
-    margin: auto;
-    margin-top: 5%;
-}
-
-.btn{
+.submitButton{
+    width: 30%;
     margin: auto;
 }
-

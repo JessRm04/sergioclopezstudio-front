@@ -1,14 +1,10 @@
-#form{
+.form{
+    display: flex;
+    flex-direction: column;
     width: 80%;
-    margin: auto;
-    margin-top: 15%;
 }
 
-.button{
-    margin: auto;
-}
-
-.donthaveanaccount{
-    margin-left: 5%;
-    color: black;
+.btn{
+    background-color: black;
+    border-color: black;
 }

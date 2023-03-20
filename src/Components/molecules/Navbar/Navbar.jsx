@@ -43,6 +43,7 @@ function NavbarComponent() {
             <span>
             <button className="contactButton" href="">Contacto</button>
             <Nav.Link className="loginButton"  href="login">Log in</Nav.Link>
+            <Nav.Link className="loginButton"  href="register">Sign in</Nav.Link>
             </span>
           </Container>
         </Navbar>

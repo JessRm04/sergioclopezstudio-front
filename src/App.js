@@ -18,7 +18,7 @@ function App() {
         <Route path="createProduct" element={<ProductForm/>} />
         <Route path="register" element={<RegisterPage/>} />
         <Route path="login" element={<LoginPage/>} />
-        {/* <Route path="*" element={<h1>Error 404</h1>}/> */}
+        <Route path="*" element={<h1>Error 404</h1>}/>
       </Routes>
     </>
   );

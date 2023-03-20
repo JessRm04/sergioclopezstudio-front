@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './styleProductForm.css'
 
 const ProductForm = () => {
   const [title, setTitle] = useState('');
@@ -23,19 +24,22 @@ const ProductForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="form" onSubmit={handleSubmit}>
       <label>
         Título:
+        <br/>
         <input type="text" value={title} onChange={(event) => setTitle(event.target.value)} />
       </label>
       <br />
       <label>
         Descripción:
+        <br/>
         <input type="text" value={description} onChange={(event) => setDescription(event.target.value)} />
       </label>
       <br />
       <label>
         Colección:
+        <br/>
         <select value={collection} onChange={(event) => setCollection(event.target.value)}>
           <option value="">--Selecciona una opción--</option>
           <option value="lacrimatorio">Lacrimatorio</option>
@@ -45,6 +49,7 @@ const ProductForm = () => {
       <br />
        <label> 
          Imagen: 
+         <br/>
          <input 
            type="file" 
            onChange={(event) => setImageFile(event.target.files[1])} 
@@ -53,14 +58,16 @@ const ProductForm = () => {
        <br /> 
        <label> 
          Precio: 
+         <br/>
          <input type="number" value={price} onChange={(event) => setPrice(event.target.value)} /> 
        </label> 
        <br /> 
        Disponibilidad:
-       Sí<input type="radio" name="availability" checked={availability === true} onChange={() => setAvailability(true)} />  
+       <br/>
+       Sí<input type="radio" name="availability" checked={availability === true} onChange={() => setAvailability(true)} /> 
        No<input type="radio" name="availability" checked={availability === false} onChange={() => setAvailability(false)} />  
         <br /><br />  
-        <input type="submit" value="Enviar" />  
+        <input className="submitButton" type="submit" value="Enviar" />  
      </form>  
    );
 };
