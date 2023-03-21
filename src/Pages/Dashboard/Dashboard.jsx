@@ -1,11 +1,15 @@
 import React from 'react'
 import DressBox from '../../Components/atoms/Dressbox/Dressbox.jsx';
+import "./styleDashboard.css"
 
 
 function Dashboard() {
     return (
       <>
-        <DressBox/>
+        <div className="dressBoxContainer">
+          <DressBox className="dressBox"/>
+          <DressBox className="dressBox"/>
+        </div>
       </>
     );
   }

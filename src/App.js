@@ -7,6 +7,8 @@ import LoginPage from './Pages/LoginForm/LoginPage';
 import ProductForm from './Pages/ProductForm/ProductForm';
 import Dashboard from './Pages/Dashboard/Dashboard.jsx'
 import ContactForm from './Components/molecules/Contact/ContactForm';
+import ProductCard from './Pages/VistaPrevia/ProductCard';
+
 
 function App() {
   return (
@@ -19,6 +21,7 @@ function App() {
         <Route path="register" element={<RegisterPage/>} />
         <Route path="login" element={<LoginPage/>} />
         <Route path="*" element={<h1>Error 404</h1>}/>
+        <Route path="/preview/:id" element={<ProductCard/>} />
       </Routes>
     </>
   );

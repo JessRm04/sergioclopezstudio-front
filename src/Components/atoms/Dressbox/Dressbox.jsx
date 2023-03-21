@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './styleDressbox.css'
+import { Link } from 'react-router-dom';
+
 
 const DressBox = () => {
   const [products, setProducts] = useState([]);
@@ -11,14 +13,14 @@ const DressBox = () => {
   }, []);
 
   return (
-    <div>
+    <div className="dressBox">
       {products.map(product => (
         <div key={product.id}>
-          <h2>{product.title}</h2>
-          <img src={'http://127.0.0.1:8000/api/products/'} alt={product.title} />
+          <Link to={`/preview/${product.id}`}>{product.title}</Link>
+          <img src={'http://127.0.0.1:8000/api/products/'} />
+          <br/>
           <p>{product.description}</p>
-          <p>Colección: {product.collection}</p>
-          <p>Precio: ${product.price}</p>
+          <p>{product.price}€</p>
         </div>
       ))}
     </div>

@@ -19,6 +19,7 @@ const ProductForm = () => {
       await axios.post('http://127.0.0.1:8000/api/products/', { title, description, collection,image: imageFile.name , price: parseInt(price), availability });
       alert('Datos enviados con éxito');
     } catch (error) {
+      console.log(error);
       alert('Ocurrió un error al enviar los datos');
     }
   };
@@ -52,7 +53,7 @@ const ProductForm = () => {
          <br/>
          <input 
            type="file" 
-           onChange={(event) => setImageFile(event.target.files[1])} 
+           onChange={(event) => setImageFile(event.target.files[0])} 
          /> 
        </label> 
        <br /> 
