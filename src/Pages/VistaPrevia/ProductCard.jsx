@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import Modal from 'react-bootstrap/Modal';
 
 const ProductCard = () => {
   const [product, setProduct] = useState({});
   const { id } = useParams()
   const navigate = useNavigate();
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -21,7 +23,17 @@ const ProductCard = () => {
   }, [id]);
 
   const handleEdit = () => {
-//editar en construcción
+    setIsEditing(true);
+  };
+
+  const handleUpdate = async (event) => {
+    event.preventDefault();
+    try {
+      await axios.put(`http://127.0.0.1:8000/api/products/${product.id}`, product);
+      setIsEditing(false);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleDelete = async () => {
@@ -47,8 +59,26 @@ const ProductCard = () => {
           <button onClick={handleDelete}>Eliminar</button>
         </div>
       )}
+
+      {isEditing && (
+        <Modal show={isEditing} onHide={() => setIsEditing(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Editar producto</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <form onSubmit={handleUpdate}>
+            <input type="text" value={product.title} onChange={e => setProduct({...product, title: e.target.value})} />
+                <input type="text" value={product.description} onChange={e => setProduct({...product, description: e.target.value})} />
+                <input type="number" value={product.price} onChange={e => setProduct({...product, price: e.target.value})} />
+                <button type="submit">Actualizar</button>
+            </form>
+          </Modal.Body>
+        </Modal>
+        )}
     </div> 
-  );
-};
+    );
+  }   
+     
+   
 
 export default ProductCard;
