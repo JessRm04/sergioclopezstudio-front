@@ -17,6 +17,7 @@ const DressBox = () => {
       {products.map(product => (
         <div key={product.id}>
           <Link to={`/preview/${product.id}`}>{product.title}</Link>
+          <br/>
           <img src={'http://127.0.0.1:8000/api/products/'} />
           <br/>
           <p>{product.description}</p>

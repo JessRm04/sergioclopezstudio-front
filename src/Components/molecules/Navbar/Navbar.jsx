@@ -41,9 +41,8 @@ function NavbarComponent() {
             <Nav.Link href="/"><img src={miniLogo} alt="logo" width="18%"></img></Nav.Link>
             </div>
             <span>
-            <button className="contactButton" href="">Contacto</button>
             <Nav.Link className="loginButton"  href="login">Log in</Nav.Link>
-            <Nav.Link className="loginButton"  href="register">Sign in</Nav.Link>
+            <Nav.Link href="register">Sign in</Nav.Link>
             </span>
           </Container>
         </Navbar>
